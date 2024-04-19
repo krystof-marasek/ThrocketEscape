@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager instance; 
+
+    public int score=0;
+    public Transform[] stagePositions; // Positions for each stage
 
     private void Awake()
     {
@@ -21,4 +25,36 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void UpdateScoreAndPosition()
+    {
+       /*  if (playerScores.ContainsKey(playerId))
+        {
+            playerScores[playerId] += scoreIncrement;
+        }
+        else
+        {
+            playerScores[playerId] = scoreIncrement;
+
+        } */
+        score+=1; 
+        Debug.Log(score);
+       // MovePlayerToNextStage(playerId, nextStageIndex);
+    }
+
+/*     private void MovePlayerToNextStage(int playerId, int stageIndex)
+    {
+        GameObject player = FindPlayerById(playerId);
+        if (player != null && stageIndex < stagePositions.Length)
+        {
+            player.transform.position = stagePositions[stageIndex].position;
+        }
+    }
+
+    private GameObject FindPlayerById(int playerId)
+    {
+        // You might need a more sophisticated way to find players depending on your game structure
+        return GameObject.Find("Player" + playerId);
+    } */
 }
+
